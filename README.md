@@ -36,17 +36,17 @@ Please refer to <http://www.ncbi.nlm.nih.gov/pubmed/20964636> for more informati
 Next TagDust* running on default settings was used to filter out artefactual tags. Below are the artefactual sequences stored in fasta format that were used as input into TagDust.
 
 \>five_prime_aaaa_three_prime<br />
-GTTCAGAGTTCTACAGTCCGACGATAAAAATCTCGTATGCCGTCTTCTGCTTG
+GTTCAGAGTTCTACAGTCCGACGATAAAAATCTCGTATGCCGTCTTCTGCTTG<br />
 \>five_prime_caaa_three_prime<br />
-GTTCAGAGTTCTACAGTCCGACGATCAAAATCTCGTATGCCGTCTTCTGCTTG
+GTTCAGAGTTCTACAGTCCGACGATCAAAATCTCGTATGCCGTCTTCTGCTTG<br />
 \>five_prime_gaaa_three_prime<br />
-GTTCAGAGTTCTACAGTCCGACGATGAAAATCTCGTATGCCGTCTTCTGCTTG
+GTTCAGAGTTCTACAGTCCGACGATGAAAATCTCGTATGCCGTCTTCTGCTTG<br />
 \>five_prime_three_prime<br />
-GTTCAGAGTTCTACAGTCCGACGATATCTCGTATGCCGTCTTCTGCTTG
+GTTCAGAGTTCTACAGTCCGACGATATCTCGTATGCCGTCTTCTGCTTG<br />
 \>rt_primer<br />
-CAAGCAGAAGACGGCATACGA
+CAAGCAGAAGACGGCATACGA<br />
 \>forward_primer<br />
-AATGATACGGCGACCACCGACAGGTTCAGAGTTCTACAGTCCGA
+AATGATACGGCGACCACCGACAGGTTCAGAGTTCTACAGTCCGA<br />
 
 *Please refer to <http://www.ncbi.nlm.nih.gov/pubmed/19737799> for more information on TagDust and the software is available at <http://genome.gsc.riken.jp/osc/english/software/src/tagdust.tgz>
 

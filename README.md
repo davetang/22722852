@@ -15,6 +15,14 @@ There were 3 experiments under DRA000540 (DRX001415 is the first sequencing run;
 2. DRX001414 (RIKEN ID SRhi10025) – Illumina HiSeq 2000 of the cut samples (pLKO, shDicer and shDrosha) from the less than 200 nt small RNA fraction
 3. DRX001415 (RIKEN ID U29-DA) – Illumina GAIIx of the 3 samples, mock (Isce-I library), uncut (NIH 2/4 library) and cut (NIH 2/4 Isce-I library)
 
+### First sequencing run
+
+The reads start with the barcode (4 bases), followed by the small RNA sequence, followed by the linker ATCTCGTATGCCGTCTTCTGCTTG. The barcodes are:
+
+1. AAAA - 3T3 ISCE-I
+2. CAAA - NIH 2/4 Lac
+3. GAAA - NIH 2/4 ISCE-I
+
 ### Short RNA pipeline
 
 Below is a description of the pipeline

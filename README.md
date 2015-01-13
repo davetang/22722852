@@ -130,3 +130,14 @@ parallel --verbose remove_tail.pl {}  ::: *trimmed.fq
 rm *trimmed.fq *notrim.fq
 mv *.bz2 ../data/
 ```
+
+Download mm9:
+
+```
+wget http://hgdownload.cse.ucsc.edu/goldenPath/mm9/bigZips/chromFa.tar.gz
+tar -xzf chromFa.tar.gz
+rm *_random.fa chromFa.tar.gz
+cat *.fa | gzip > mm9.fa.gz
+rm *.fa
+bwa index mm9.fa.gz
+```

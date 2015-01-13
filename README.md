@@ -7,7 +7,7 @@ Site-specific DICER and DROSHA RNA products control the DNA-damage response
 
 ### Data description
 
-Sequence data is available at DDBJ under the accession DRA000540.
+Sequence data is available at DDBJ under the accession [DRA000540](https://trace.ddbj.nig.ac.jp/DRASearch/submission?acc=DRA000540).
 
 There were 3 experiments under DRA000540 (DRX001415 is the first sequencing run; DRX001413 and DRX001414 are the second sequencing run):
 
@@ -15,17 +15,13 @@ There were 3 experiments under DRA000540 (DRX001415 is the first sequencing run;
 2. DRX001414 (RIKEN ID SRhi10025) – Illumina HiSeq 2000 of the cut samples (pLKO, shDicer and shDrosha) from the less than 200 nt small RNA fraction
 3. DRX001415 (RIKEN ID U29-DA) – Illumina GAIIx of the 3 samples, mock (Isce-I library), uncut (NIH 2/4 library) and cut (NIH 2/4 Isce-I library)
 
-### First sequencing run
+### Short RNA pipeline for the first sequencing run
 
 The reads start with the barcode (4 bases), followed by the small RNA sequence, followed by the linker ATCTCGTATGCCGTCTTCTGCTTG. The barcodes are:
 
 1. AAAA - 3T3 ISCE-I
 2. CAAA - NIH 2/4 Lac
 3. GAAA - NIH 2/4 ISCE-I
-
-### Short RNA pipeline
-
-Below is a description of the pipeline
 
 #### Tag extraction
 
@@ -80,3 +76,5 @@ Using BWA* with default parameters, we aligned the unmapped tags to our locus. W
 For our nucleotide bias analysis, we removed tags that were 32 bp in length as it is not possible to determine the composition of the last nucleotide for tags longer than 31 bp. 13 of the 67 tag sequences were longer than 31 bp.
 
 *Please refer to <http://www.ncbi.nlm.nih.gov/pubmed/19451168> for more information on BWA.
+
+### Pipeline for the second sequencing run

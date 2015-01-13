@@ -15,6 +15,14 @@ There were 3 experiments under DRA000540 (DRX001415 is the first sequencing run;
 2. DRX001414 (RIKEN ID SRhi10025) – Illumina HiSeq 2000 of the cut samples (pLKO, shDicer and shDrosha) from the less than 200 nt small RNA fraction
 3. DRX001415 (RIKEN ID U29-DA) – Illumina GAIIx of the 3 samples, mock (Isce-I library), uncut (NIH 2/4 library) and cut (NIH 2/4 Isce-I library)
 
+Download data
+
+1. `wget ftp://ftp.ddbj.nig.ac.jp/ddbj_database/dra/fastq/DRA000/DRA000540/DRX001413/DRR001952.fastq.bz2`
+2. `wget ftp://ftp.ddbj.nig.ac.jp/ddbj_database/dra/fastq/DRA000/DRA000540/DRX001414/DRR001953.fastq.bz2`
+3. `wget ftp://ftp.ddbj.nig.ac.jp/ddbj_database/dra/fastq/DRA000/DRA000540/DRX001415/DRR001954.fastq.bz2`
+
+DRR001952.fastq.bz2 is s_7_sequence.txt.bz2 and DRR001953.fastq.bz2 is s_8_sequence.txt.bz2.
+
 ### Short RNA pipeline for the first sequencing run
 
 The reads start with the barcode (4 bases), followed by the small RNA sequence, followed by the linker ATCTCGTATGCCGTCTTCTGCTTG. The barcodes are:
@@ -78,3 +86,55 @@ For our nucleotide bias analysis, we removed tags that were 32 bp in length as i
 *Please refer to <http://www.ncbi.nlm.nih.gov/pubmed/19451168> for more information on BWA.
 
 ### Pipeline for the second sequencing run
+
+Barcodes for s_7_sequence.txt.bz2 are (stored in filename bc):
+
+1. plko_uncut      GAAA
+2. dicer_uncut     AAAA
+3. drosha_uncut    CAAA
+
+Barcodes for s_8_sequence.txt.bz2 are (stored in filename bc2):
+
+1. plko_cut        GAAA
+2. dicer_cut       AAAA
+3. drosha_cut      CAAA
+
+#### Tag extraction
+
+The commands for tag extraction and the output
+
+<pre>
+bzcat s_7_sequence.txt.bz2 | fastx_barcode_splitter.pl --bcfile bc --exact --bol --prefix s_7_ --suffix .notrim.fq
+Barcode Count   Location
+dicer_uncut     31953520        s_7_dicer_uncut.notrim.fq
+drosha_uncut    30021920        s_7_drosha_uncut.notrim.fq
+plko_uncut      45006378        s_7_plko_uncut.notrim.fq
+unmatched       1078240 s_7_unmatched.notrim.fq
+total   108060058
+
+bzcat s_8_sequence.txt.bz2 | fastx_barcode_splitter.pl --bcfile bc2 --exact --bol --prefix s_8_ --suffix .notrim.fq
+Barcode Count   Location
+dicer_cut       39888235        s_8_dicer_cut.notrim.fq
+drosha_cut      30444437        s_8_drosha_cut.notrim.fq
+plko_cut        41015240        s_8_plko_cut.notrim.fq
+unmatched       1003318 s_8_unmatched.notrim.fq
+total   112351230
+</pre>
+
+Remove barcode sequences:
+
+```
+for file in `ls *cut.notrim.fq.bz2`;
+   do base=`basename $file .fq.bz2`;
+   remove_barcode.pl $file > ${base}_trimmed.fq;
+   bzip2 ${base}_trimmed.fq
+done
+```
+
+Remove tail
+
+```
+for file in `ls *trimmed.fq.bz2`;
+   do remove_tail.pl $file;
+done
+```

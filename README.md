@@ -121,20 +121,12 @@ unmatched       1003318 s_8_unmatched.notrim.fq
 total   112351230
 </pre>
 
-Remove barcode sequences:
+Remove barcode and tailing sequences:
 
 ```
-for file in `ls *cut.notrim.fq.bz2`;
-   do base=`basename $file .fq.bz2`;
-   remove_barcode.pl $file > ${base}_trimmed.fq;
-   bzip2 ${base}_trimmed.fq
-done
-```
-
-Remove tail
-
-```
-for file in `ls *trimmed.fq.bz2`;
-   do remove_tail.pl $file;
-done
+parallel --verbose "remove_barcode.pl {} > {.}_trimmed.fq" ::: *cut.notrim.fq
+parallel --verbose remove_tail.pl {}  ::: *trimmed.fq
+#clean up
+rm *trimmed.fq *notrim.fq
+mv *.bz2 ../data/
 ```

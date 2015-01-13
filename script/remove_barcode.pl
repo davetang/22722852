@@ -10,7 +10,7 @@ my $infile = shift or die $usage;
 if ($infile =~ /\.fq.bz2$/){
    open(IN,'-|',"bzcat $infile") || die "Could not open $infile: $!\n";
 } else {
-   die "Did not recognise file; is it a bzip2 fastq file?\n";
+   open(IN,'<',$infile) || die "Could not open $infile: $!\n";
 }
 
 while(<IN>){
